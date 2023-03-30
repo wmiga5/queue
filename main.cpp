@@ -19,6 +19,6 @@ int main() {
     cout<<endl;
     kolej.wypisz();
     cout<<kolej.size();
-    cout<<kolej.min()<<endl;
+    //cout<<kolej.min()<<endl;
     return 0;
 }

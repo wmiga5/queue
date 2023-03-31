@@ -1,6 +1,4 @@
 # ninja log v5
-0	122	7018932335306347	build.ninja	bb0c84ce4d7bd8ff
-0	288	7018932159829873	CMakeFiles/programowanie.dir/main.cpp.obj	b16608762950929e
-289	386	7018932160780737	programowanie.exe	9c0b52178298dc1d
+0	122	7019529701269267	build.ninja	bb0c84ce4d7bd8ff
 3	274	7018932482144673	CMakeFiles/programowanie.dir/main.cpp.obj	b16608762950929e
 274	338	7018932482747823	programowanie.exe	9c0b52178298dc1d

@@ -6,8 +6,16 @@
 #define PROGRAMOWANIE_KOLEJKA_H
 
 #include <string>
+template <typename Typ>
+struct elem_listy
+{
+    elem_listy<Typ>(int k=100,Typ x=0){priorytet=k;element=x; nastepny=NULL;}
+    elem_listy<Typ> *nastepny;
+    int priorytet;
+    Typ element;
 
 
+};
 
 
 template <typename Typ>
@@ -21,27 +29,22 @@ int size() const ;
 
 void insert(int numer,Typ dane);
 
-Typ removeMin();
+elem_listy<Typ>* removeMin();
 
 Typ min() const;
 
 bool isEmpty() const ;
 
+
+
+
 void wypisz();
 private:
     //Struktura przechwująca elementy kolejki
-    struct elem_listy
-    {
-        elem_listy(int k=100,Typ x=0){priorytet=k;element=x; nastepny=NULL;}
-        elem_listy *nastepny;
-        int priorytet;
-        Typ element;
 
 
-    };
-
-    elem_listy *head;
-    elem_listy *tail;
+    elem_listy<Typ> *head;
+    elem_listy<Typ> *tail;
 
 
 };
@@ -53,10 +56,11 @@ void Kolejka<Typ>::wypisz() {
     {std::cout<<"pusto"<<std::endl;}
 
 
-    elem_listy *pomoc=head;
+    elem_listy<Typ> *pomoc=head;
 
     while (pomoc!=NULL)
-    {
+    {   //std::cout<<"test "<<pomoc->nastepny->element<<std::endl;
+       // std::cout<<pomoc->priorytet<<std::endl;
         std::cout<<pomoc->element;
         pomoc=pomoc->nastepny;
     }
@@ -78,20 +82,20 @@ Typ Kolejka<Typ>::min() const {
 }
 
 template<typename Typ>
-Typ Kolejka<Typ>::removeMin() {
+elem_listy<Typ>* Kolejka<Typ>::removeMin() {
     //sprawdz to
-    elem_listy* pomoc;
+    elem_listy<Typ>* pomoc;
     pomoc=head;
 
     head= head->nastepny;
-    Typ zwraca=pomoc->element;
-    delete pomoc;
+    elem_listy<Typ>* zwraca=pomoc;
+
     return zwraca;
 }
 
 template<typename Typ>
 void Kolejka<Typ>::insert(int numer, Typ dane) {
-    elem_listy * dodany=new elem_listy(numer,dane);
+    elem_listy<Typ> * dodany=new elem_listy<Typ>(numer,dane);
     //lista jest pusta
     if(isEmpty())
     {
@@ -101,9 +105,9 @@ void Kolejka<Typ>::insert(int numer, Typ dane) {
     }
     else
     {
-        elem_listy * licznik=head;
+        elem_listy<Typ> * licznik=head;
 
-        elem_listy * poprzedni=NULL;
+        elem_listy<Typ> * poprzedni=NULL;
         while (licznik!=NULL) {
             //Sprawdzamy czy priorytet dodanego jest mniejszy niż kolejnych elementów, jeśli tak to przeskakujemy dalej
             if ( dodany->priorytet >= licznik->priorytet)
@@ -143,7 +147,7 @@ void Kolejka<Typ>::insert(int numer, Typ dane) {
 template<typename Typ>
 int Kolejka<Typ>::size() const {
         int rozmiar=0;
-        elem_listy* pomoc=head;
+        elem_listy<Typ>* pomoc=head;
         while(pomoc!=NULL)
         {
             pomoc=pomoc->nastepny;

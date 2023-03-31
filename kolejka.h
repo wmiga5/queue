@@ -57,7 +57,7 @@ void Kolejka<Typ>::wypisz() {
 
     while (pomoc!=NULL)
     {
-        std::cout<<" "<<pomoc->element<<" ";
+        std::cout<<pomoc->element;
         pomoc=pomoc->nastepny;
     }
 
@@ -79,8 +79,14 @@ Typ Kolejka<Typ>::min() const {
 
 template<typename Typ>
 Typ Kolejka<Typ>::removeMin() {
+    //sprawdz to
+    elem_listy* pomoc;
+    pomoc=head;
+
     head= head->nastepny;
-    return head->element;
+    Typ zwraca=pomoc->element;
+    delete pomoc;
+    return zwraca;
 }
 
 template<typename Typ>
@@ -107,7 +113,7 @@ void Kolejka<Typ>::insert(int numer, Typ dane) {
                 //Jeśli dodany element ma najwyższy priorytet to poprzedni wskazuje na niego, a dodany wskazuje na null
                 if(licznik==NULL)
                 {
-                    std::cout<<"Dziala"<<std::endl;
+
                     poprzedni->nastepny=dodany;
                     tail=dodany;
                 }
@@ -126,7 +132,7 @@ void Kolejka<Typ>::insert(int numer, Typ dane) {
                 }
 
                 dodany->nastepny=licznik;
-                std::cout<<"wykonane"<<std::endl;
+
                 return;
             }
         }

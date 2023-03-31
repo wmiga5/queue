@@ -28,7 +28,16 @@ int main() {
 
     elem_listy<string>* losowa_tablica[kolej.size()];
     int losowa_przydzial[kolej.size()];
+    //wypełniam tablice samymi -1
+        for(int i=0;i<kolej.size();i++)
+        {
+            losowa_przydzial[i]=-1;
+        }
+    //
+
     int licznik=0;
+    cout<<endl;
+    cout<<"ile"<<kolej.size()<<endl;
     while(licznik<kolej.size())
     {
         int wylosowania;
@@ -45,6 +54,7 @@ int main() {
         }
         if(czy_jest==false)
         {
+
             losowa_przydzial[licznik]=wylosowania;
 
 

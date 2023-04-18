@@ -1,0 +1,3 @@
+C:/Users/wojte/Desktop/programowanie/sortowanie_moje/cmake-build-debug/CMakeFiles/sortowanie_moje.dir
+C:/Users/wojte/Desktop/programowanie/sortowanie_moje/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/wojte/Desktop/programowanie/sortowanie_moje/cmake-build-debug/CMakeFiles/rebuild_cache.dir

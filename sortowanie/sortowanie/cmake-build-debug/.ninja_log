@@ -1,0 +1,14 @@
+# ninja log v5
+1472	1647	1680898011579710301	sortowanie	91122f888b715634
+1	795	7032759301254075	CMakeFiles/sortowanie.dir/src/main.cpp.obj	9ffb96a2bf0d3b57
+796	984	7032759303122524	sortowanie.exe	ada780fe81bbd69f
+3	521	7032764445195949	CMakeFiles/sortowanie.dir/src/main.cpp.obj	9ffb96a2bf0d3b57
+521	604	7032764446000803	sortowanie.exe	ada780fe81bbd69f
+2	522	7032764556260141	CMakeFiles/sortowanie.dir/src/main.cpp.obj	9ffb96a2bf0d3b57
+522	599	7032764557003455	sortowanie.exe	ada780fe81bbd69f
+2	517	7032765020903141	CMakeFiles/sortowanie.dir/src/main.cpp.obj	9ffb96a2bf0d3b57
+517	595	7032765021638469	sortowanie.exe	ada780fe81bbd69f
+3	529	7032766712730397	CMakeFiles/sortowanie.dir/src/main.cpp.obj	9ffb96a2bf0d3b57
+529	605	7032766713441637	sortowanie.exe	ada780fe81bbd69f
+3	513	7032776110650317	CMakeFiles/sortowanie.dir/src/main.cpp.obj	9ffb96a2bf0d3b57
+514	606	7032776111536900	sortowanie.exe	ada780fe81bbd69f

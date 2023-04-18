@@ -10,12 +10,12 @@
 #include <vector>
 #include <sstream>
 
-#define SIZE 51585
+#define SIZE 52690
 
 struct Data
 {
     std:: string Title="Default title";
-    int Rating=0;
+    int Rating=1;
 };
 
 std::ostream& operator << (std::ostream& os, const Data& rhs)    //Overloaded operator for '<<'{                                                                                    //for struct output
@@ -83,7 +83,7 @@ void Sorting<Typ>::download_data(std::string file_name) {
                 getline(ss, trash, ',');
 
             }
-            getline(ss, s_rating, ',');
+            getline(ss, s_rating);
             try {
                 if(!s_rating.empty())
                 {
@@ -98,6 +98,7 @@ void Sorting<Typ>::download_data(std::string file_name) {
             }
             iterator++;
         }
+       // std::cout<<vector[51585]<<std::endl;
     }
     int iterator_table=0;
     while(iterator_table<SIZE)

@@ -10,7 +10,7 @@
 #include <vector>
 #include <sstream>
 
-#define SIZE 52690
+
 
 struct Data
 {
@@ -29,16 +29,17 @@ template<typename Typ>
 class Sorting
         {
         public:
-            Sorting(){Table_size=0;}
-    void quick_sort();
+            Sorting(){Table_size=0;Table_with_Data=new Typ[SIZE];}
+            ~Sorting(){delete[] Table_with_Data;}
+    void quick_sort(int first_element,int last_element);
     void bucket_sort();
     void merge_sort();
     void download_data(std::string file_name);
     void write_out();
-
+    int  get_Table_size()const   {return Table_size;}
         private:
 
-    Typ Table_with_Data[SIZE];
+    Typ* Table_with_Data;
     int Table_size;
 
 
@@ -97,11 +98,13 @@ void Sorting<Typ>::download_data(std::string file_name) {
                 continue;
             }
             iterator++;
+
         }
-       // std::cout<<vector[51585]<<std::endl;
+
+
     }
     int iterator_table=0;
-    while(iterator_table<SIZE)
+    while(iterator_table<vector.size())
     {
         Table_with_Data[iterator_table]=vector[iterator_table];
         iterator_table++;
@@ -109,6 +112,7 @@ void Sorting<Typ>::download_data(std::string file_name) {
     }
 
 
+std::cout<<Table_size<<std::endl;
 }
 
 template<typename Typ>
@@ -191,9 +195,47 @@ void Sorting<Typ>::bucket_sort() {
 }
 
 template<typename Typ>
-void Sorting<Typ>::quick_sort() {
+void Sorting<Typ>::quick_sort(int first_element,int last_element) {
+
+    Typ pivot;
+    Typ swap_help;
+
+
+
+    int j=0;
+
+    int i=(first_element+last_element)/2;
+    pivot=Table_with_Data[i];
+    Table_with_Data[i]=Table_with_Data[last_element];
+   // std::cout<<pivot.Rating<<std::endl;
+    for(i=j=first_element;i<last_element;i++)
+    {
+        if(Table_with_Data[i].Rating>pivot.Rating)
+        {
+            swap_help=Table_with_Data[i];
+            Table_with_Data[i]=Table_with_Data[j];
+            Table_with_Data[j]=swap_help;
+            j++;
+
+
+        }
+    }
+    Table_with_Data[last_element]=Table_with_Data[j];
+    Table_with_Data[j]=pivot;
+
+
+    if(first_element<j-1)
+    {
+        this->quick_sort(first_element,j-1);
+    }
+
+    if(j+1<last_element)
+    {
+        this->quick_sort(j+1,last_element);
+    }
 
 }
+
 
 
 #endif //SORTOWANIE_MOJE_SORTOWNIA_H

@@ -1,5 +1,5 @@
 #include <iostream>
-long int const SIZE=90000;
+long int const SIZE=400000;
 
 #include "Sortownia.h"
 using namespace std;
@@ -14,6 +14,7 @@ int main() {
     //movies.bucket_sort();
 
     movies.quick_sort(0,movies.get_Table_size()-1);
+   // movies.merge_sort(0,movies.get_Table_size()-1);
     movies.write_out();
 
     return 0;

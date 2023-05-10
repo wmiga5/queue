@@ -38,10 +38,12 @@ class Sorting
     void bucket_sort();
     void merge_sort(int first_element,int last_element);
     void Scalaj(int first_element,int middle_element,int last_element);
-
+    void Check();
     void download_data(std::string file_name);
     void write_out();
     int  get_Table_size()const   {return Table_size;}
+    float average();
+    float median();
         private:
 
     Typ* Table_with_Data;
@@ -49,60 +51,6 @@ class Sorting
 
 
         };
-
-template<typename Typ>
-void Sorting<Typ>::Scalaj(int first_element,int middle_element,int last_element) {
-
-    int A_element(first_element),B_element(middle_element+1),index(0);
-    Typ *help=new Typ[last_element-first_element+1];
-
-    while(A_element<=middle_element && B_element<=last_element)
-    {
-        if(Table_with_Data[B_element].Rating>Table_with_Data[A_element].Rating)
-        {
-            help[index++]=Table_with_Data[B_element++];
-        }
-        else
-        {
-            help[index++]=Table_with_Data[A_element++];
-        }
-    }
-    if (A_element <= middle_element)
-    {
-        while (A_element <= middle_element)
-        {
-            help[index++] = Table_with_Data[A_element++];
-        }
-
-    }
-    else
-    {
-        while (B_element <= last_element)
-        {
-            help[index++] = Table_with_Data[B_element++];
-        }
-    }
-
-    // przepisywanie wyniku sortowania z tablicy pomocniczej do oryginalnej
-    for (index = 0; index <= last_element - first_element; index++)
-    {
-        Table_with_Data[first_element + index] = help[index];
-    }
-
-
-    delete [] help;
-}
-
-template<typename Typ>
-void Sorting<Typ>::write_out() {
-    std::cout<<Table_size<<std::endl;
-    for(int i=0;i<Table_size;i++)
-    {
-        std::cout<<Table_with_Data[i]<<std::endl;
-    }
-
-}
-
 template<typename Typ>
 void Sorting<Typ>::download_data(std::string file_name) {
     Data data;
@@ -160,17 +108,122 @@ void Sorting<Typ>::download_data(std::string file_name) {
     }
 
 
-std::cout<<Table_size<<std::endl;
+    std::cout<<Table_size<<std::endl;
 }
+
+template<typename Typ>
+void Sorting<Typ>::write_out() {
+    std::cout<<Table_size<<std::endl;
+    for(int i=0;i<Table_size;i++)
+    {
+        std::cout<<Table_with_Data[i]<<std::endl;
+    }
+
+}
+template<typename Typ>
+float Sorting<Typ>::median() {
+
+
+
+    if(get_Table_size()%2==0)
+    {
+        return (float)(Table_with_Data[get_Table_size()/2].Rating+Table_with_Data[(get_Table_size()/2)+1].Rating)/2;
+    }
+    else
+    {
+        return (float)Table_with_Data[get_Table_size()/2].Rating;
+    }
+
+
+}
+
+template<typename Typ>
+float Sorting<Typ>::average() {
+    float average;
+    for(int i=0;i<get_Table_size();i++)
+    {
+        average+=Table_with_Data[i].Rating;
+    }
+    return average/get_Table_size();
+}
+
+template<typename Typ>
+void Sorting<Typ>::Check() {
+    int checker=Table_with_Data[0].Rating;
+
+    for(int i=0;i<get_Table_size();i++)
+    {
+        if(checker>=Table_with_Data[i].Rating)
+        {
+            checker=Table_with_Data[i].Rating;
+
+
+        }
+        else
+        {
+           std::cout<<"Blad sortowania"<< std::endl;
+           return;
+        }
+    }
+
+
+}
+
+template<typename Typ>
+void Sorting<Typ>::Scalaj(int first_element,int middle_element,int last_element) {
+
+    int A_element(first_element),B_element(middle_element+1),index(0);
+    Typ *help=new Typ[last_element-first_element+1];
+
+    while(A_element<=middle_element && B_element<=last_element)
+    {
+        if(Table_with_Data[B_element].Rating>Table_with_Data[A_element].Rating)
+        {
+            help[index++]=Table_with_Data[B_element++];
+        }
+        else
+        {
+            help[index++]=Table_with_Data[A_element++];
+        }
+    }
+    if (A_element <= middle_element)
+    {
+        while (A_element <= middle_element)
+        {
+            help[index++] = Table_with_Data[A_element++];
+        }
+
+    }
+    else
+    {
+        while (B_element <= last_element)
+        {
+            help[index++] = Table_with_Data[B_element++];
+        }
+    }
+
+
+    for (index = 0; index <= last_element - first_element; index++)
+    {
+        Table_with_Data[first_element + index] = help[index];
+    }
+
+
+    delete [] help;
+}
+
+
+
 
 template<typename Typ>
 void Sorting<Typ>::merge_sort(int first_element,int last_element) {
    // std::cout<<"Jestem"<<std::endl;
-    if (first_element >= 0 && first_element < last_element) {
+    if (first_element >= 0 && first_element < last_element)
+    {
         int middle_elemnt = (first_element + last_element) / 2;
         merge_sort( first_element, middle_elemnt);
         merge_sort( middle_elemnt + 1, last_element);
-        // scalanie kolejnych 2 podtablic w 1 posortowana az do posortowania oryginalnej
+
         Scalaj(first_element,middle_elemnt,last_element);
     }
 }
@@ -259,8 +312,14 @@ int Sorting<Typ>::cut_table(int first_element,int last_element)
     int iter_A(first_element),iter_B(last_element);
     while(1)
     {
-        while(Table_with_Data[iter_A].Rating>pivot.Rating) {iter_A++;}
-        while(Table_with_Data[iter_B].Rating<pivot.Rating) {iter_B--;}
+        while(Table_with_Data[iter_A].Rating>pivot.Rating)
+        {
+            iter_A++;
+        }
+        while(Table_with_Data[iter_B].Rating<pivot.Rating)
+        {
+            iter_B--;
+        }
 
         if(iter_A>=iter_B)
         {
@@ -278,10 +337,11 @@ int Sorting<Typ>::cut_table(int first_element,int last_element)
 template<typename Typ>
 void Sorting<Typ>::quick_sort(int first_element,int last_element) {
 
-    if (first_element >= 0 && first_element < last_element) {
-        int pivot = cut_table( first_element, last_element);  // element osiowy
-        quick_sort( first_element, pivot);            // lewa podtablica
-        quick_sort( pivot + 1, last_element);          // prawa podtablica
+    if (first_element >= 0 && first_element < last_element)
+    {
+        int pivot = cut_table( first_element, last_element);
+        quick_sort( first_element, pivot);
+        quick_sort( pivot + 1, last_element);
     }
 
 

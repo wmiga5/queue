@@ -1,0 +1,10 @@
+# ninja log v5
+3	332	7069112597023061	CMakeFiles/checkers.dir/src/main.cpp.obj	3701bedab7d085c
+266	334	7069113147048648	checkers.exe	a16741ab475be672
+0	113	7069116806957788	build.ninja	8b625fdd832fc9ac
+2	266	7069113146415144	CMakeFiles/checkers.dir/src/table.cpp.obj	81a95474ca5e6bf6
+7	51	7069112594185735	CMakeFiles/checkers.dir/src/piece.cpp.obj	6606e45b96d22413
+2	273	7069116973026767	CMakeFiles/checkers.dir/src/main.cpp.obj	522aea8c0641f95a
+2	280	7069117044888834	CMakeFiles/checkers.dir/src/table.cpp.obj	8e1c4d88ad199486
+2	43	7069117109669128	CMakeFiles/checkers.dir/src/piece.cpp.obj	1c009ff6d3f83d13
+44	111	7069117110324298	checkers.exe	a16741ab475be672
